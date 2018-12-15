@@ -1,0 +1,13 @@
+import os
+
+def create_new_file(dataname, text):
+    if os.path.exists(os.getcwd() + "\\" + dataname):
+        return dataname + " " + "exists! " + "in " + os.getcwd()
+    else:
+        with open(dataname, "w") as outfile:
+            content = os.getcwd() + "\ " + dataname + "\n" + text
+            print(content, file=outfile)
+        return "New file" + " " + dataname + " " + "created " + "in " + os.getcwd()
+dataname = input("File name : ")
+text = input("Text:")
+print(create_new_file(dataname, text))
