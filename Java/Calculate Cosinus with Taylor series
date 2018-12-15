@@ -1,0 +1,65 @@
+public class Cosinus {
+    public static void main(String[] args) {
+	if (args.length != 1){
+        System.out.println("ERROR");
+    	}
+        else{
+	double x = Double.parseDouble( args[0] );
+		if (x<0){
+		System.out.println("ERROR");
+                }
+            else{
+	x = cos(x)*100;
+	double b = (int)x;
+	double res = b/100;
+  	System.out.println(res);
+        }
+   }
+}
+public static double power(double a, int b){
+    double result = 1.0;
+    int i = 0;
+    do {
+        if (b == 0)
+        {
+            result = 1.0;
+        }
+        else{
+        result = result*a;
+        i++;
+        } 
+        
+        
+    }while (i<b);
+    return result;
+}    		
+    
+    
+    public static double cos(double x){
+    x = x%6.28318530717958;
+	int n = 0;
+	double finalcos = 0;	
+	double tempcos = 0;
+	
+	do {
+		tempcos = 0;
+		double posneg = power(-1 , n);
+		double downer = 1;
+		    for (int i = 1; i <= 2*n; i++){
+			downer = downer * i;
+		    }
+		double upper = power(x, 2*n);
+                tempcos = posneg * (upper / downer);
+        	
+		finalcos = finalcos + tempcos;
+		
+		if (tempcos < 0){
+		tempcos = -tempcos;		
+		}
+		
+		n++;
+		
+	} while(tempcos > 0.00001); 
+	return finalcos;
+}
+}
